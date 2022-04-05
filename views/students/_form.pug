@@ -1,22 +1,22 @@
 // Form fields
 .mb-3 
     label.form-label(for="first-name") First name
-    input#first-name.form-control(type="text", name="first_name", value=`${model.first_name}`)
+    input#first-name.form-control(type="text", name="first_name", value=`${model.first_name}`, required)
 .mb-3 
     label.form-label(for="last-name") Last name
-    input#last-name.form-control(type="text", name="last_name", value=`${model.last_name}`)
+    input#last-name.form-control(type="text", name="last_name", value=`${model.last_name}`, required)
 .mb-3 
     label.form-label(for="birth-date") Date of birth
-    input#birth-date.form-control(type="date", name="birth_date", value=`${model.birth_date}`)
+    input#birth-date.form-control(type="date", name="birth_date", value=`${model.birth_date}`, required)
 .mb-3 
     label.form-label(for="group") Group
-    input#group.form-control(type="text", name="group", value=`${model.group}`)
+    input#group.form-control(type="text", name="group", value=`${model.group}`, required)
 .mb-3 
     label.form-label(for="level") Level
-    input#level.form-control(type="text", name="level", value=`${model.level}`)
+    input#level.form-control(type="text", name="level", value=`${model.level}`, required)
 .mb-3 
     label.form-label(for="course") Course
-    select#course.form-select(type="text", name="course_id")
+    select#course.form-select(type="text", name="course_id", required)
         option Choose the course
         each course in courses
             - var isSelected = course.id == model.course_id

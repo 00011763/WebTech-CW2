@@ -1,5 +1,5 @@
 const sequelize = require("./db")
-const { Student, Course } = require("./models")
+const { Student } = require("./models")
 
 let express = require("express")
 let app = express()
@@ -8,17 +8,6 @@ let port = process.env.PORT || 3000
 sequelize
     .sync({ alter: true })
     .then(() => console.log("Database was initialised..."))
-
-// Student.create({
-//     first_name: "John",
-//     last_name: "Doe",
-//     birth_date: new Date("2002-01-01"),
-//     group: "4BIS99",
-//     level: 4,
-//     course_id: 2,
-// })
-//     .then(() => console.log("Created new student"))
-//     .catch((e) => console.log(e))
 
 let courses = [
     { id: 1, nameShort: "BM" },

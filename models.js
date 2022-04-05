@@ -12,6 +12,11 @@ let Student = sequelize.define(
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                notNull: {
+                    msg: "Please fill this first name field",
+                },
+            },
         },
         last_name: {
             type: DataTypes.STRING,
@@ -31,25 +36,4 @@ let Student = sequelize.define(
     }
 )
 
-let Course = sequelize.define(
-    "Course",
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        nameShort: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: DataTypes.TEXT,
-    },
-    { tableName: "course", timestamps: false }
-)
-
-module.exports = { Student, Course }
+module.exports = { Student }

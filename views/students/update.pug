@@ -12,7 +12,7 @@ block content
         
     h2= `Update: ${model.first_name} ${model.last_name}` 
 
-    form.my-3(action=`/student/edit/${model.id}`, method="POST")
+    form.my-3#studentForm(action=`/student/edit/${model.id}`, method="POST")
         - 
             var courses = [
                 {id: 1, nameShort: "BM"},
