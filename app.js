@@ -18,12 +18,21 @@ sequelize
 //     .then(() => console.log("Created new student"))
 //     .catch((e) => console.log(e))
 
+let courses = [
+    { id: 1, nameShort: "BM" },
+    { id: 2, nameShort: "BIS" },
+    { id: 3, nameShort: "Fin" },
+    { id: 4, nameShort: "EcoFin" },
+    { id: 5, nameShort: "CL" },
+]
+
 app.use("/static", express.static("public"))
+app.use(express.urlencoded({ extended: false }))
 
 app.set("view engine", "pug")
 
 app.get("/", (req, res) => {
-    res.render("404")
+    res.render("index")
 })
 
 app.get("/students", async (req, res) => {
@@ -33,7 +42,7 @@ app.get("/students", async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-    res.render("students/index", { students })
+    res.render("students/index", { students, courses })
 })
 
 app.get("/student/view/:id", async (req, res) => {
@@ -47,7 +56,44 @@ app.get("/student/view/:id", async (req, res) => {
 })
 
 app.get("/student/create", (req, res) => {
-    res.render("students/create")
+    let student = {
+        first_name: "",
+        last_name: "",
+        birth_date: "",
+        group: "",
+        level: "",
+        course_id: "",
+    }
+    res.render("students/create", { student })
+})
+
+app.post("/student/store", async (req, res) => {
+    await Student.create(req.body)
+    res.redirect("/students")
+})
+
+app.get("/student/update/:id", async (req, res) => {
+    let id = req.params.id
+    let model = await Student.findByPk(id)
+    if (model !== null) {
+        res.render("students/update", { model })
+    } else {
+        res.render("404")
+    }
+})
+
+app.post("/student/edit/:id", async (req, res) => {
+    let id = req.params.id
+    let model = await Student.findByPk(id)
+    await model.update(req.body)
+    res.redirect("/students")
+})
+
+app.get("/student/delete/:id", async (req, res) => {
+    let id = req.params.id
+    let model = await Student.findByPk(id)
+    await model.destroy()
+    res.redirect("/students")
 })
 
 app.listen(3000, () => {
