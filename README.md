@@ -11,3 +11,7 @@ ID: 00011763
 ### Run project through
 `npm install`
 `node app.js`
+
+### Location
+`https://web-tech-cw2-11763.herokuapp.com/`
+`https://github.com/00011763/WebTech-CW2`
