@@ -1,9 +1,26 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-    body 
-        h1 Hello world!
+extends layout.pug
+
+block content
+    .card.text-center
+        .card-body
+            h2 WIUT Learning Management System
+            p Hi, welcome to WIUT LMS. We are glad to greet you.
+            button.btn.btn-primary Get Started
+    
+    .row.justify-content-evenly.mt-5
+        .card.text-center.col-md-3
+            .card-body 
+                h4 Students 
+                p See the list of all students 
+                a.btn.btn-primary(href="#") See &#8594;
+        .card.text-center.col-md-3
+            .card-body 
+                h4 Teachers 
+                p See the list of all teacher 
+                a.btn.btn-primary(href="#") See &#8594;
+        .card.text-center.col-md-3
+            .card-body 
+                h4 Modules 
+                p See the list of all modules 
+                a.btn.btn-primary(href="#") See &#8594;
+    
