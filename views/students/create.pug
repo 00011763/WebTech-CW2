@@ -1,0 +1,24 @@
+extends ../layout.pug 
+
+block content
+    nav(aria-label='breadcrumb')
+        ol.breadcrumb
+            li.breadcrumb-item
+                a(href='/') Home
+            li.breadcrumb-item
+                a(href='/students') Students
+            li.breadcrumb-item.active(aria-current='page') Create
+        
+    h2 Create new student
+    
+    form.my-3(action="/student/store", method="POST")
+        - var model = student;
+        - 
+            var courses = [
+                {id: 1, nameShort: "BM"},
+                {id: 2, nameShort: "BIS"},
+                {id: 3, nameShort: "Fin"},
+                {id: 4, nameShort: "EcoFin"},
+                {id: 5, nameShort: "CL"},
+            ];
+        include _form.pug

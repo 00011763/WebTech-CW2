@@ -1,8 +1,10 @@
-let express = require("express")
 const sequelize = require("./db")
 const { Student, Course } = require("./models")
+
+let express = require("express")
 let app = express()
 
+let port = process.env.PORT || 3000
 sequelize
     .sync({ alter: true })
     .then(() => console.log("Database was initialised..."))
@@ -96,6 +98,6 @@ app.get("/student/delete/:id", async (req, res) => {
     res.redirect("/students")
 })
 
-app.listen(3000, () => {
-    console.log("Running app on http://localhost:3000")
+app.listen(port, () => {
+    console.log(`Running app on port ${port}`)
 })

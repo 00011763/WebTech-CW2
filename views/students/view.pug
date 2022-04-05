@@ -1,0 +1,39 @@
+extends ../layout.pug 
+
+block content 
+    nav(aria-label='breadcrumb')
+        ol.breadcrumb
+            li.breadcrumb-item
+                a(href='/') Home
+            li.breadcrumb-item
+                a(href='/students') Students
+            li.breadcrumb-item.active(aria-current='page')= model.first_name + ' ' + model.last_name
+
+
+    h2.mb-4= model.first_name + ' ' + model.last_name
+
+    table.table.table-bordered.w-50
+        tbody 
+            tr 
+                td.bg-light.fw-bold ID 
+                td= model.id 
+            tr 
+                td.bg-light.fw-bold First Name 
+                td= model.first_name 
+            tr 
+                td.bg-light.fw-bold Last Name 
+                td= model.last_name 
+            tr 
+                td.bg-light.fw-bold Date of birth 
+                td= model.birth_date 
+            tr 
+                td.bg-light.fw-bold Group 
+                td= model.group 
+            tr 
+                td.bg-light.fw-bold Level 
+                td= model.level
+            tr 
+                td.bg-light.fw-bold Course 
+                td= model.course_id
+                
+                

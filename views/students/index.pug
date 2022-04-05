@@ -1,0 +1,37 @@
+extends ../layout.pug
+
+block content 
+    .d-flex.justify-content-between.align-items-center.mb-3
+        h2 Students index page
+        a.btn.btn-success(href="/student/create") Create
+
+    table.table.table-hover.table-bordered 
+        thead 
+            tr
+                th ID 
+                th First name 
+                th Last name 
+                th Date of Birth
+                th Group
+                th Level 
+                th Course
+                th Actions
+        tbody
+            each student in students 
+                tr 
+                    td= student.id 
+                    td= student.first_name 
+                    td= student.last_name 
+                    td= student.birth_date
+                    td= student.group
+                    td= student.level 
+                    td= courses.find(course => course.id == student.course_id).nameShort
+                    td
+                        div
+                            a.btn.btn-primary.me-2(href=`/student/view/${student.id}`)
+                                i.fa-solid.fa-eye
+                            a.btn.btn-warning.me-2(href=`/student/update/${student.id}`)
+                                i.fa-solid.fa-pencil
+                            a.btn.btn-danger(href=`/student/delete/${student.id}`)
+                                i.fa-solid.fa-trash-can
+

@@ -1,0 +1,27 @@
+doctype html
+html.h-100(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        // Bootstrap CSS
+        link(rel="stylesheet", href="/static/bootstrap/css/bootstrap.min.css")
+        // App CSS Vendor
+        link(rel="stylesheet", href="/static/css/app.css")
+        // Fontawesome Icons
+        link(rel="stylesheet", href="/static/fontawesome/css/all.css")
+
+        link(rel="shortcut icon", href="static/images/favicon.ico", type="image/x-icon")
+        title WIUT LMS
+    body.d-flex.flex-column.h-100 
+        main.flex-shrink-0 
+            include extras/navbar.pug
+
+            div.container.h-100.py-3
+                block content
+        
+        include extras/footer.pug
+
+        // Scripts Bootstrap
+        script(src="/static/bootstrap/js/bootstrap.bundle.min.js") 
